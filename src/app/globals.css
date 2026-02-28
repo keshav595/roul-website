@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-brand-gray-50: #fafafa;
+  --color-brand-gray-100: #f5f5f5;
+  --color-brand-gray-200: #e5e5e5;
+  --color-brand-gray-300: #d4d4d4;
+  --color-brand-gray-400: #a3a3a3;
+  --color-brand-gray-500: #737373;
+  --color-brand-gray-600: #525252;
+  --color-brand-gray-700: #404040;
+  --color-brand-gray-800: #262626;
+  --color-brand-gray-900: #171717;
+  --color-brand-gray-950: #0a0a0a;
+
+  --font-sans: var(--font-primary);
+  --font-secondary: var(--font-secondary);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --line-color: #e5e5e5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+    --line-color: #262626;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  @apply antialiased;
+}
+
+
+/* Only apply animation – NOT grayscale */
+.img-hover-scale {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.img-hover-scale:hover {
+  transform: scale(1.03);
+}
+
+
+/* Base utility for vertical lines */
+.vertical-line {
+  width: 1px;
+  background-color: var(--line-color);
+  height: 100%;
+}
+
+/* Base horizontal line */
+.horizontal-line {
+  height: 1px;
+  background-color: var(--line-color);
+  width: 100%;
+}
+
+/* Arch shaped mask */
+.arch-mask {
+  border-radius: 9999px 9999px 0 0;
+  overflow: hidden;
+}
+
+/* Thin underline animation */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Hide scrollbar for smooth editorial feel but keep functionality */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-gray-500);
+}
