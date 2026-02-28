@@ -15,7 +15,7 @@ export default function ProjectCaseStudy({
 }: {
   params: { slug: string };
 }) {
-  const title = params.slug.replace("-", " ");
+  const title = params?.slug ? params.slug.replace(/-/g, " ") : "Project";
 
   return (
     <main className="min-h-screen bg-black">
