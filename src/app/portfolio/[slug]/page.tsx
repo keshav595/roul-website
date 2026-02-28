@@ -1,10 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/Button";
-import { use } from "react";
-
 export function generateStaticParams() {
   return [
     { slug: "arch-residence" },
@@ -12,6 +8,10 @@ export function generateStaticParams() {
     { slug: "horizon-estate" },
   ];
 }
+
+import Link from "next/link";
+import { Button } from "@/components/Button";
+import { use } from "react";
 
 export default function ProjectCaseStudy({
   params,
